@@ -14,10 +14,11 @@ int main (int argc, const char * argv[]) {
 						</body></html><!-- END: main -->"];
 	[p setVar:@"TITLE" withValue:@"Sample 1"];
 	[p setVar:@"MESSAGE" withValue:@"Sample body message"];
-	[p parse:@"main.row"];
-	[p setVar:@"MESSAGE" withValue:@"Sample body message TWO"];
-	[p parse:@"main.row"];
-	NSLog([p output]);
+	//[p parse:@"main.row"];
+	//[p setVar:@"MESSAGE" withValue:@"Sample body message TWO"];
+	//[p parse:@"main.row"];
+	[p parse:@"main"];
+	NSLog(@"\n\n********************************\n%@",[p output]);
     [pool drain];
     return 0;
 }

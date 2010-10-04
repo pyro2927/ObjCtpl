@@ -273,7 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>3</integer>
+									<integer>7</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ObjCtpl.m</string>
+								<string>ObjCtplBlock.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,19 +324,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ObjCtpl.m</string>
+										<string>ObjCtplBlock.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D8C9C844125A557400272BDB</string>
+										<string>D8C9C8A1125A616200272BDB</string>
 										<key>history</key>
 										<array>
 											<string>D8C9C749125A3AB700272BDB</string>
-											<string>D8C9C839125A54DC00272BDB</string>
-											<string>D8C9C83C125A555600272BDB</string>
-											<string>D8C9C83D125A555600272BDB</string>
-											<string>D8C9C842125A557400272BDB</string>
-											<string>D8C9C843125A557400272BDB</string>
+											<string>D8C9C848125A597900272BDB</string>
+											<string>D8C9C896125A60FC00272BDB</string>
+											<string>D8C9C897125A60FC00272BDB</string>
+											<string>D8C9C898125A60FC00272BDB</string>
+											<string>D8C9C899125A60FC00272BDB</string>
+											<string>D8C9C89A125A60FC00272BDB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -534,11 +535,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>D8C9C8A2125A616200272BDB</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>D8C9C774125A3BDE00272BDB</string>
 		<string>D8C9C775125A3BDE00272BDB</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>D8C9C724125A2BC400272BDB</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/joe/Documents/iPhone/ObjCtpl/ObjCtpl.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
 	</array>
@@ -564,7 +566,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ObjCtplBlock.h</string>
+								<string>ObjCtplBlock.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -759,7 +761,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

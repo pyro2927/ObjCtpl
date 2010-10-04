@@ -18,6 +18,7 @@
 		// make sure to also check for subblocks
 		html = code;
 		subBlocks = [[NSMutableDictionary alloc] init];
+		output = [[NSMutableString alloc] init];
 		[self findSubBlocks];
 	}
 	return self;
@@ -38,8 +39,9 @@
 		NSString *commentEnder = [NSString stringWithFormat:@"%@ %@ %@",kBlockEnd, subName, kEnder];
 		codeEnd = [temp rangeOfString: commentEnder];
 		NSString *subHtml = [[temp substringToIndex:codeEnd.location + codeEnd.length] substringFromIndex:start.location];
-		NSLog(@"Sub block, creating with HTML: %@",subHtml);
+		//NSLog(@"Sub block, creating with HTML: %@",subHtml);
 		ObjCtplBlock *subby = [[ObjCtplBlock alloc] initWithCode: subHtml];
+		[subby setName:subName];
 		[subBlocks setValue:subby forKey:subName];
 		
 	}
@@ -51,7 +53,7 @@
 		return @"";
 	}
 	NSMutableString *cache = [[NSMutableString alloc] initWithString:html];
-	
+	//NSLog(@"Parsing subblock with name %@ and html code of %@",self.name, html);
 	//look for variables and fill them in
 	NSRange range, end;
 	NSString *varName = nil;
@@ -71,7 +73,36 @@
 		range = [cache rangeOfString:kVarStart];
 	}
 	
-	return cache;
+	output = cache;
+	
+	//check to see if we need to wrap our subblocks up inside
+	NSString *temp = [cache substringFromIndex:[cache rangeOfString:kBlockStart].location + 8];
+	NSLog(@"temp: %@",temp);
+	NSRange subBlockStart = [temp rangeOfString:kBlockStart];
+	if (subBlockStart.location != NSNotFound) {
+		//NSLog(@"We found a subblock when parsing");
+		//we have some nested stuff we need to wrap up
+		NSString *begin = [[temp substringFromIndex:subBlockStart.location] substringToIndex:8 + subBlockStart.length];
+		NSLog(@"Begin of next block: ****** %@ ******",begin);
+		NSString *pre = [cache substringToIndex:[cache rangeOfString:begin].location];
+		NSLog(@"Output prefix: %@",pre);
+		//append this prefix to our output
+		[output insertString:pre atIndex:0];
+		
+		//also get what comes after this nested block
+		NSRange ender = [temp rangeOfString:kBlockEnd];
+		if (ender.location != NSNotFound) {
+			NSString *cutOff = [temp substringFromIndex:ender.location];
+			ender = [cutOff rangeOfString:kEnder];
+			cutOff = [cutOff substringFromIndex:ender.location + ender.length];
+			//NSLog(@"After block: %@",cutOff);
+			
+			[output appendString:cutOff];
+		}
+		
+	}
+	NSLog(@"Block named %@ parsed, returning %@",self.name, output);
+	return output;
 }
 
 -(NSString *)parseSubblock:(NSString *)sub{
@@ -80,9 +111,10 @@
 	if ([subBlocks objectForKey:sub]) {
 		//we have a block!
 		//parse and add to the cache
-		ObjCtplBlock *b = [subBlocks objectForKey:sub];
+		ObjCtplBlock *b = (ObjCtplBlock*)[subBlocks objectForKey:sub];
 		[b setDelegate:self.delegate];
-		return [b parse];
+		[output appendString:[b parse]];
+		return output;
 	}
 	else {
 		//check to see if it's a nested block
@@ -91,7 +123,8 @@
 			NSString *mainBlock = [sub substringToIndex:dot.location];
 			NSString *subby = [sub substringFromIndex:dot.location + dot.length];
 			ObjCtplBlock *b = [subBlocks objectForKey:mainBlock];
-			return [b parseSubblock:subby];
+			[output appendString:[b parseSubblock:subby]];
+			return output;
 		}
 	}
 	return @"";

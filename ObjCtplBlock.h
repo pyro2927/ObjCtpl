@@ -19,7 +19,7 @@
 	NSString *name;
 	id delegate;
 	NSString *html;
-	NSString *output;
+	NSMutableString *output;
 }
 
 @property (retain) NSString *name;
