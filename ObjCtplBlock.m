@@ -94,6 +94,7 @@
 			NSString *mainBlock = [sub substringToIndex:dot.location];
 			NSString *subby = [sub substringFromIndex:dot.location + dot.length];
 			ObjCtplBlock *b = [subBlocks objectForKey:mainBlock];
+			[b setDelegate:self.delegate];
 			[b parseSubblock:subby];
 		}
 	}

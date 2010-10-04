@@ -86,6 +86,7 @@
 
 -(NSString *)valueForVariableNamed:(NSString *)name{
 	if ([vars valueForKey:name]) {
+		NSLog(@"Returning value of %@",[vars valueForKey:name]);
 		return [vars valueForKey:name];
 	}
 	NSLog(@"No stored variable found for var named: %@",name);
