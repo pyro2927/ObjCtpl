@@ -273,7 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>7</integer>
+									<integer>3</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ObjCtplBlock.m</string>
+								<string>ObjCtpl.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,20 +324,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ObjCtplBlock.m</string>
+										<string>ObjCtpl.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D8C9C8A1125A616200272BDB</string>
+										<string>D8C9C8DA125A700800272BDB</string>
 										<key>history</key>
 										<array>
 											<string>D8C9C749125A3AB700272BDB</string>
 											<string>D8C9C848125A597900272BDB</string>
-											<string>D8C9C896125A60FC00272BDB</string>
-											<string>D8C9C897125A60FC00272BDB</string>
-											<string>D8C9C898125A60FC00272BDB</string>
-											<string>D8C9C899125A60FC00272BDB</string>
-											<string>D8C9C89A125A60FC00272BDB</string>
+											<string>D8C9C8C2125A6E3C00272BDB</string>
+											<string>D8C9C8C6125A6ECC00272BDB</string>
+											<string>D8C9C8D8125A700800272BDB</string>
+											<string>D8C9C8D9125A700800272BDB</string>
+											<string>D8C9C8C1125A6E3C00272BDB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -535,7 +535,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D8C9C8A2125A616200272BDB</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>D8C9C774125A3BDE00272BDB</string>
 		<string>D8C9C775125A3BDE00272BDB</string>
@@ -561,6 +560,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -583,8 +584,6 @@
 							<string>218pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

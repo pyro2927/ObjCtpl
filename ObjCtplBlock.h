@@ -18,8 +18,9 @@
 	NSDictionary *subBlocks;
 	NSString *name;
 	id delegate;
-	NSString *html;
+	NSMutableString *html;
 	NSMutableString *output;
+	NSMutableArray *parsedBlocks;
 }
 
 @property (retain) NSString *name;

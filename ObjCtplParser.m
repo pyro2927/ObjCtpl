@@ -81,7 +81,7 @@
 }
 
 -(NSString *)output{
-	return cache;
+	return [[blocks objectForKey:@"main"] output];
 }
 
 -(NSString *)valueForVariableNamed:(NSString *)name{
