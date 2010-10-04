@@ -29,8 +29,11 @@ int main (int argc, const char * argv[]) {
 	[p setVar:@"LOGOSRC" withValue:@"http://localhost.jpg"];
 	[p setVar:@"LOGONAME" withValue:@"And name!"];
 	[p setVar:@"WEBSITE" withValue:@"www.google.com"];
+	[p setVar:@"NAME" withValue:@"test name"];
 	
 	[p parse:@"main.logo"];
+	[p parse:@"main.website"];
+	[p setVar:@"WEBSITE" withValue:@"www.web2.com"];
 	[p parse:@"main.website"];
 	
 	[p parse:@"main"];

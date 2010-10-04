@@ -274,8 +274,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>4</integer>
-									<integer>2</integer>
+									<integer>7</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -317,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ObjCtpl.m</string>
+								<string>ObjCtplBlock.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,21 +325,20 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ObjCtpl.m</string>
+										<string>ObjCtplBlock.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D8C9C920125A74FC00272BDB</string>
+										<string>D8C9C936125A7AE200272BDB</string>
 										<key>history</key>
 										<array>
 											<string>D8C9C848125A597900272BDB</string>
-											<string>D8C9C8C6125A6ECC00272BDB</string>
 											<string>D8C9C8D9125A700800272BDB</string>
-											<string>D8C9C8E5125A715500272BDB</string>
-											<string>D8C9C8EE125A72BF00272BDB</string>
-											<string>D8C9C907125A73F400272BDB</string>
 											<string>D8C9C908125A73F400272BDB</string>
-											<string>D8C9C909125A73F400272BDB</string>
+											<string>D8C9C92E125A774200272BDB</string>
+											<string>D8C9C932125A79F700272BDB</string>
+											<string>D8C9C933125A79F700272BDB</string>
+											<string>D8C9C934125A79F700272BDB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -537,14 +536,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>D8C9C921125A74FC00272BDB</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>D8C9C774125A3BDE00272BDB</string>
 		<string>D8C9C775125A3BDE00272BDB</string>
-		<string>D8C9C724125A2BC400272BDB</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>/Users/joe/Documents/iPhone/ObjCtpl/ObjCtpl.xcodeproj</string>
 		<string>1C78EAAD065D492600B07095</string>
+		<string>D8C9C724125A2BC400272BDB</string>
+		<string>/Users/joe/Documents/iPhone/ObjCtpl/ObjCtpl.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 107 1280 671 0 0 1280 778 </string>
@@ -763,7 +761,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -920,7 +918,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

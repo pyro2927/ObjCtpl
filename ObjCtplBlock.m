@@ -19,7 +19,7 @@
 		html = [NSMutableString stringWithString:code];
 		subBlocks = [[NSMutableDictionary alloc] init];
 		output = [[NSMutableString alloc] init];
-		parsedBlocks = [[NSMutableArray alloc] init];
+		parsedBlocks = [[NSMutableDictionary alloc] init];
 		[self findSubBlocks];
 	}
 	return self;
@@ -73,7 +73,7 @@
 		//see if we have any more variables to swap out
 		range = [cache rangeOfString:kVarStart];
 	}
-	
+	NSLog(@"Returning parsed: %@",cache);
 	return cache;
 }
 
@@ -85,7 +85,11 @@
 		//parse and add to the cache
 		ObjCtplBlock *b = (ObjCtplBlock*)[subBlocks objectForKey:sub];
 		[b setDelegate:self.delegate];
-		[parsedBlocks addObject:[b parse]];
+		//[parsedBlocks setObject:[b parse] forKey:b.name];
+		if (![parsedBlocks objectForKey:b.name]) {
+			[parsedBlocks setObject:[[NSMutableArray alloc] init] forKey:b.name];
+		}
+		[((NSMutableArray*)[parsedBlocks objectForKey:b.name]) addObject:[b parse]];
 	}
 	else {
 		//check to see if it's a nested block
@@ -113,6 +117,7 @@
 	NSArray *array = [subBlocks allValues];
 	for(int i = 0; i < [array count]; i++)
 	{
+		NSLog(@"We obviously have subs");
 		ObjCtplBlock *b = [array objectAtIndex:i];
 		//take this block and find it's location
 		NSString *blockHeader = [NSString stringWithFormat:@"%@ %@ %@", kBlockStart, b.name, kEnder];
@@ -123,9 +128,10 @@
 			NSString *blockFooter = [NSString stringWithFormat:@"%@ %@ %@", kBlockEnd, b.name, kEnder];
 			NSRange foot = [html rangeOfString:blockFooter];
 			NSMutableString *temp = [NSMutableString stringWithString:[html substringToIndex:head.location]];
-			for(int j = 0; j < [parsedBlocks count]; j++)
+			NSArray *parsed = [parsedBlocks objectForKey:b.name];
+			for(int j = 0; j < [parsed count]; j++)
 			{
-				[temp appendString:[parsedBlocks objectAtIndex:j]];
+				[temp appendString:[parsed objectAtIndex:j]];
 			}
 			[temp appendString:[html substringFromIndex:foot.location + foot.length]];
 			html = temp;

@@ -20,7 +20,7 @@
 	id delegate;
 	NSMutableString *html;
 	NSMutableString *output;
-	NSMutableArray *parsedBlocks;
+	NSMutableDictionary *parsedBlocks; //a dictionary of mutable arrays, keys being the block names
 }
 
 @property (retain) NSString *name;
