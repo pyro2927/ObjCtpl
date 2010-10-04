@@ -6,10 +6,17 @@ int main (int argc, const char * argv[]) {
 
     // insert code here...
     NSLog(@"Hello, World!");
-	ObjCtplParser *p = [[ObjCtplParser alloc] initWithHTML:@"<!-- BEGIN: main --><html><head><title>{TITLE}</title></head><body>{MESSAGE}</body></html><!-- END: main -->"];
+	ObjCtplParser *p = [[ObjCtplParser alloc] initWithHTML:@"<!-- BEGIN: main --><html><head><title>{TITLE}</title></head><body>\
+						List:\
+						<!-- BEGIN: row -->\
+						* {MESSAGE} <br>\
+						<!-- END: row -->\
+						</body></html><!-- END: main -->"];
 	[p setVar:@"TITLE" withValue:@"Sample 1"];
 	[p setVar:@"MESSAGE" withValue:@"Sample body message"];
-	[p parse:@"main"];
+	[p parse:@"main.row"];
+	[p setVar:@"MESSAGE" withValue:@"Sample body message TWO"];
+	[p parse:@"main.row"];
 	NSLog([p output]);
     [pool drain];
     return 0;

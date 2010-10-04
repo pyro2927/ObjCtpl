@@ -15,6 +15,7 @@
 	if (self = [super init]) {
 		blocks = [[NSMutableDictionary alloc] init];
 		vars = [[NSMutableDictionary alloc] init];
+		cache = [[NSMutableString alloc] init];
 		html = code;
 		[self findBlockInCode:html];
 	}
@@ -34,10 +35,17 @@
 		//we have a block!
 		//parse and add to the cache
 		ObjCtplBlock *b = [blocks objectForKey:blockName];
-		cache = [b parse];
+		[cache appendString:[b parse]];
 	}
 	else {
-		NSLog(@"No blocks with the name %@ found",blockName);
+		//check to see if it's a nested block
+		NSRange dot = [blockName rangeOfString:@"."];
+		if (dot.location != NSNotFound) {
+			NSString *mainBlock = [blockName substringToIndex:dot.location];
+			NSString *subby = [blockName substringFromIndex:dot.location + dot.length];
+			ObjCtplBlock *b = [blocks objectForKey:mainBlock];
+			[cache appendString:[b parseSubblock:subby]];
+		}
 	}
 
 }
@@ -50,18 +58,21 @@
 		return;
 	}
 	
-	//otherwise, we got some parsing to do!
-	ObjCtplBlock *block = [[ObjCtplBlock alloc] initWithCode:code];
+	//now look for the end of the block header
 	NSRange end = [code rangeOfString:kEnder];
 	if (end.location == NSNotFound) {
 		//this is a big problem, if we found a block starter, but no ender, something is wrong with the htmlcode
 		return;
 	}
 	
-	NSString *name = [[code substringToIndex:end.location] substringFromIndex:range.location + range.length];
-	//remove whitespace
+	//otherwise, we got some parsing to do!
+	ObjCtplBlock *block = [[ObjCtplBlock alloc] initWithCode:code];
 	
+	NSString *name = [[code substringToIndex:end.location] substringFromIndex:range.location + range.length];
+	
+	//remove whitespace
 	name = [name stringByReplacingOccurrencesOfString:@" " withString:@""];
+	
 	[block setName:name];
 	[block setDelegate:self];
 	

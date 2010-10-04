@@ -18,7 +18,7 @@
 	NSMutableDictionary *blocks;
 	NSMutableDictionary *vars;
 	NSString *html;
-	NSString *cache;
+	NSMutableString *cache;
 }
 
 @property (retain) NSString *html;

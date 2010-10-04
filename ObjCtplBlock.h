@@ -19,12 +19,17 @@
 	NSString *name;
 	id delegate;
 	NSString *html;
+	NSString *output;
 }
 
 @property (retain) NSString *name;
+@property (retain) id delegate;
+
 
 -(NSString *)parse;
+-(NSString *)parseSubblock:(NSString *)sub;
 -(id)initWithCode:(NSString *)code;
 -(void)setDelegate:(id)del;
+-(void)findSubBlocks;
 
 @end
