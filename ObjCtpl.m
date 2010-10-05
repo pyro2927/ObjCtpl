@@ -1,39 +1,25 @@
 #import <Foundation/Foundation.h>
 #import "ObjCtplParser.h"
 #define BASEURL [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]
+#define TEST_TEMPLATE_URL	***PUT YOUR URL HERE***
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 
     // insert code here...
-    NSLog(@"Hello, World!");
-	ObjCtplParser *p = [[ObjCtplParser alloc] initWithHTML:@"<!-- BEGIN: main -->\
-						<html>\
-						<head>\
-						<link rel=\"stylesheet\" type=\"text/css\" href=\"shared.css\"/>\
-						</head>\
-						<body>\
-						<div id=\"header\">\
-						<!-- BEGIN: logo -->\
-						<img src=\"{LOGOSRC}\" name=\"{LOGONAME}\" />\
-						<!-- END: logo -->\
-						<h1>{NAME}</h1>\
-						<!-- BEGIN: website -->\
-						<p id=\"website\"><a href=\"{WEBSITE}\">{WEBSITE}</a>\
-						<!-- END: website -->\
-						</body>\
-						</html>\
-						<!-- END: main -->"];
+    //NSLog(@"Hello, World!");
+	NSString *html = [NSString stringWithContentsOfURL:[NSURL URLWithString:TEST_TEMPLATE_URL]];
 	
+	ObjCtplParser *p = [[ObjCtplParser alloc] initWithHTML:html];
 	
-	[p setVar:@"LOGOSRC" withValue:@"http://localhost.jpg"];
-	[p setVar:@"LOGONAME" withValue:@"And name!"];
 	[p setVar:@"WEBSITE" withValue:@"www.google.com"];
 	[p setVar:@"NAME" withValue:@"test name"];
+	[p setVar:@"EMAIL" withValue:@"joe@test.com"];
+	[p setVar:@"PHONE" withValue:@"815-790-2927"];
+	[p setVar:@"DESCRIPTION" withValue:@"This is a test description"];
 	
-	[p parse:@"main.logo"];
-	[p parse:@"main.website"];
-	[p setVar:@"WEBSITE" withValue:@"www.web2.com"];
+	[p parse:@"main.email"];
+	[p parse:@"main.phone"];
 	[p parse:@"main.website"];
 	
 	[p parse:@"main"];
