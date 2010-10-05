@@ -34,13 +34,13 @@
 		blockEnd = [temp rangeOfString:kEnder];
 		NSString *subName = [[temp substringToIndex:blockEnd.location] substringFromIndex:start.location + start.length];
 		subName = [subName stringByReplacingOccurrencesOfString:@" " withString:@""];
-		NSLog(@"Found a subBlock with name %@",subName);
+		//NSLog(@"Found a subBlock with name %@",subName);
 		
 		//we must find the end of this block
 		NSString *commentEnder = [NSString stringWithFormat:@"%@ %@ %@",kBlockEnd, subName, kEnder];
 		codeEnd = [temp rangeOfString: commentEnder];
 		NSString *subHtml = [[temp substringToIndex:codeEnd.location + codeEnd.length] substringFromIndex:start.location];
-		NSLog(@"Sub block, creating with HTML: %@",subHtml);
+		//NSLog(@"Sub block, creating with HTML: %@",subHtml);
 		ObjCtplBlock *subby = [[ObjCtplBlock alloc] initWithCode: subHtml];
 		[subby setName:subName];
 		[subBlocks setValue:subby forKey:subName];
@@ -66,7 +66,7 @@
 	while (range.location != NSNotFound) {
 		end = [cache rangeOfString:kVarEnd];
 		varName = [[cache substringToIndex:end.location] substringFromIndex:range.location + 1];
-		NSLog(@"Found var named: %@",varName);
+		//NSLog(@"Found var named: %@",varName);
 		
 		//swap out variable
 		swap = [NSString stringWithFormat:@"%@%@%@", kVarStart, varName, kVarEnd];
@@ -76,7 +76,7 @@
 		//see if we have any more variables to swap out
 		range = [cache rangeOfString:kVarStart];
 	}
-	NSLog(@"Returning parsed: %@",cache);
+	//NSLog(@"Returning parsed: %@",cache);
 	return cache;
 }
 
@@ -92,7 +92,9 @@
 		if (![parsedBlocks objectForKey:b.name]) {
 			[parsedBlocks setObject:[[NSMutableArray alloc] init] forKey:b.name];
 		}
-		[((NSMutableArray*)[parsedBlocks objectForKey:b.name]) addObject:[b parse]];
+		NSLog(@"Adding subblock to list of parsed blocks");
+		[((NSMutableArray*)[parsedBlocks objectForKey:b.name]) addObject:[b output]];
+		NSLog(@"Array of parsed blocks: %@", ((NSMutableArray*)[parsedBlocks objectForKey:b.name]));
 	}
 	else {
 		//check to see if it's a nested block
@@ -120,7 +122,7 @@
 	NSArray *array = [subBlocks allValues];
 	for(int i = 0; i < [array count]; i++)
 	{
-		NSLog(@"We obviously have subs");
+		//NSLog(@"We obviously have subs");
 		ObjCtplBlock *b = [array objectAtIndex:i];
 		//take this block and find it's location
 		NSString *blockHeader = [NSString stringWithFormat:@"%@ %@ %@", kBlockStart, b.name, kEnder];
