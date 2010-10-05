@@ -329,16 +329,16 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>D8C9C936125A7AE200272BDB</string>
+										<string>D8C9C956125A7CF300272BDB</string>
 										<key>history</key>
 										<array>
 											<string>D8C9C848125A597900272BDB</string>
 											<string>D8C9C8D9125A700800272BDB</string>
 											<string>D8C9C908125A73F400272BDB</string>
-											<string>D8C9C92E125A774200272BDB</string>
-											<string>D8C9C932125A79F700272BDB</string>
 											<string>D8C9C933125A79F700272BDB</string>
-											<string>D8C9C934125A79F700272BDB</string>
+											<string>D8C9C951125A7CEF00272BDB</string>
+											<string>D8C9C952125A7CEF00272BDB</string>
+											<string>D8C9C953125A7CEF00272BDB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -720,10 +720,10 @@
 									<key>Frame</key>
 									<string>{{316, 0}, {378, 185}}</string>
 									<key>RubberWindowFrame</key>
-									<string>-707 175 694 422 -1024 0 1024 768 </string>
+									<string>-729 53 694 422 -1024 0 1024 768 </string>
 								</dict>
 								<key>RubberWindowFrame</key>
-								<string>-707 175 694 422 -1024 0 1024 768 </string>
+								<string>-729 53 694 422 -1024 0 1024 768 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugSessionModule</string>
@@ -757,7 +757,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
 			<key>WindowString</key>
-			<string>-707 175 694 422 -1024 0 1024 768 </string>
+			<string>-729 53 694 422 -1024 0 1024 768 </string>
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>

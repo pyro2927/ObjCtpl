@@ -30,7 +30,7 @@
 	NSRange start = [temp rangeOfString:kBlockStart];
 	NSRange blockEnd;
 	NSRange codeEnd;
-	if (start.location != NSNotFound) {
+	while (start.location != NSNotFound) {
 		blockEnd = [temp rangeOfString:kEnder];
 		NSString *subName = [[temp substringToIndex:blockEnd.location] substringFromIndex:start.location + start.length];
 		subName = [subName stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -40,11 +40,14 @@
 		NSString *commentEnder = [NSString stringWithFormat:@"%@ %@ %@",kBlockEnd, subName, kEnder];
 		codeEnd = [temp rangeOfString: commentEnder];
 		NSString *subHtml = [[temp substringToIndex:codeEnd.location + codeEnd.length] substringFromIndex:start.location];
-		//NSLog(@"Sub block, creating with HTML: %@",subHtml);
+		NSLog(@"Sub block, creating with HTML: %@",subHtml);
 		ObjCtplBlock *subby = [[ObjCtplBlock alloc] initWithCode: subHtml];
 		[subby setName:subName];
 		[subBlocks setValue:subby forKey:subName];
 		
+		//then check for next
+		temp = [html substringFromIndex:[html rangeOfString:commentEnder].location + [html rangeOfString:commentEnder].length];
+		start = [temp rangeOfString:kBlockStart];
 	}
 }
 
