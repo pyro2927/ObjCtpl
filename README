@@ -10,3 +10,10 @@
 
 This project attempts to recreate the functionality given by
 Jtpl (http://jtpl.sourceforge.net/).
+
+IMPORTANT:  The beginning and end block syntax is dependant on whitespace.
+<!-- BEGIN: block_name -->
+<!-- END: block_name -->
+
+Searching via regular expressions is only available in iOS 3.2 or higher,
+so to allow more compatability I am not using that function as of now.
