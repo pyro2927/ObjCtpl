@@ -11,7 +11,33 @@
 This project attempts to recreate the functionality given by
 Jtpl (http://jtpl.sourceforge.net/).
 
-IMPORTANT:  The beginning and end block syntax is dependant on whitespace.
+How to use:
+You only need the following files in your project to use ObjCtpl:
+* ObjCtplParser (.h and .m)
+* ObjCtplBlock (.h and .m)
+
+Make sure the following is in the file you are going to be parsing with:
+#include ObjCtpl.h
+
+Then setup your instance of the class:
+ObjCtplParser *p = [[ObjCtplParser alloc] initWithHTML:HTML_STRING];
+
+Next set your variables:
+[p setVar:@"WEBSITE" withValue:@"www.google.com"];
+[p setVar:@"NAME" withValue:@"test name"];
+[p setVar:@"EMAIL" withValue:@"joe@test.com"]
+
+And then parse the blocks:
+[p parse:@"main.email"];
+[p parse:@"main.phone"];
+[p parse:@"main.website"];
+[p parse:@"main"];
+
+To retrieve the completed output, call:
+[p output]
+
+IMPORTANT:  The beginning and end block syntax included in the HTML
+template IS dependant on whitespace.
 <!-- BEGIN: block_name -->
 <!-- END: block_name -->
 
