@@ -1,2 +1,5 @@
-# Ignore build folder *
+# Ignore build folder # 
 build/
+
+# BS Files #
+.DS_Store
