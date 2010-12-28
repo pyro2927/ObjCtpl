@@ -63,18 +63,21 @@
 	NSString *varName = nil;
 	NSString *swap = nil;
 	range = [cache rangeOfString:kVarStart];
-	while (range.location != NSNotFound) {
-		end = [cache rangeOfString:kVarEnd];
-		varName = [[cache substringToIndex:end.location] substringFromIndex:range.location + 1];
+	while (range.location != NSNotFound && range.location != [cache length]) {
+		end = [cache rangeOfString:kVarEnd options:NSLiteralSearch range:NSMakeRange(range.location + 1, [cache length] - range.location - 1)];
+		varName = [cache substringWithRange:NSMakeRange(range.location + 1, end.location - range.location - 1)];
+		//varName = [[cache substringToIndex:end.location] substringFromIndex:range.location + 1];
 		//NSLog(@"Found var named: %@",varName);
 		
 		//swap out variable
 		swap = [NSString stringWithFormat:@"%@%@%@", kVarStart, varName, kVarEnd];
-		cache = (NSMutableString *)[cache stringByReplacingOccurrencesOfString:swap withString:[delegate valueForVariableNamed:varName]];
-		
-		
-		//see if we have any more variables to swap out
-		range = [cache rangeOfString:kVarStart];
+		NSString *value = [delegate valueForVariableNamed:varName];
+		if (value) {
+			[cache replaceOccurrencesOfString:swap withString:value options:NSLiteralSearch range:NSMakeRange(0, [cache length])];
+			range = [cache rangeOfString:kVarStart];
+		} else {
+			range = [cache rangeOfString:kVarStart options:NSLiteralSearch range:NSMakeRange(range.location + range.length, [cache length] - range.location - range.length)];
+		}
 	}
 	//NSLog(@"Returning parsed: %@",cache);
 	return cache;

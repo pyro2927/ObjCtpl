@@ -90,7 +90,7 @@
 		return [vars valueForKey:name];
 	}
 	//NSLog(@"No stored variable found for var named: %@",name);
-	return @"";
+	return nil;
 }
 
 @end
