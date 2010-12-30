@@ -84,7 +84,7 @@
 }
 
 -(NSString *)parseSubblock:(NSString *)sub{
-	NSLog(@"Parsing subBlock with name: %@",sub);
+	DebugLog(@"Parsing subBlock with name: %@",sub);
 	//find our blocks
 	if ([subBlocks objectForKey:sub]) {
 		//we have a block!
