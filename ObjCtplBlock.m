@@ -53,7 +53,7 @@
 
 -(NSString *)parse{
 	if (!self.delegate) {
-		NSLog(@"Error, we have no delegate");
+		DebugLog(@"Error, we have no delegate");
 		return @"";
 	}
 	NSMutableString *cache = [[NSMutableString alloc] initWithString:html];
@@ -95,9 +95,9 @@
 		if (![parsedBlocks objectForKey:b.name]) {
 			[parsedBlocks setObject:[[NSMutableArray alloc] init] forKey:b.name];
 		}
-		NSLog(@"Adding subblock to list of parsed blocks");
+		DebugLog(@"Adding subblock to list of parsed blocks");
 		[((NSMutableArray*)[parsedBlocks objectForKey:b.name]) addObject:[b output]];
-		NSLog(@"Array of parsed blocks: %@", ((NSMutableArray*)[parsedBlocks objectForKey:b.name]));
+		DebugLog(@"Array of parsed blocks: %@", ((NSMutableArray*)[parsedBlocks objectForKey:b.name]));
 	}
 	else {
 		//check to see if it's a nested block

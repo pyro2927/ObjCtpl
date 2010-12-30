@@ -76,7 +76,7 @@
 	[block setName:name];
 	[block setDelegate:self];
 	
-	NSLog(@"Found block with name: %@",name);
+	DebugLog(@"Found block with name: %@",name);
 	[blocks setObject:block forKey:name];
 }
 
