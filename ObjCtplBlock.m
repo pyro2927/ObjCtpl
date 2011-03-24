@@ -13,7 +13,7 @@
 @synthesize name, delegate;
 
 -(id)initWithCode:(NSString *)code{
-	if (self = [super init]) {
+	if (self == [super init]) {
 		//check for block header and set name
 		// make sure to also check for subblocks
 		html = [NSMutableString stringWithString:code];

@@ -12,7 +12,7 @@
 @synthesize html;
 
 -(id)initWithHTML:(NSString*)code{
-	if (self = [super init]) {
+	if (self == [super init]) {
 		blocks = [[NSMutableDictionary alloc] init];
 		vars = [[NSMutableDictionary alloc] init];
 		cache = [[NSMutableString alloc] init];
